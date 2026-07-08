@@ -439,11 +439,10 @@ state.markets.forEach(m => {
 			const [h2, m2, s2] = marketClosetime.split(':').map(Number);
 			const timeToSeconds2= h2 * 3600 + m2 * 60 + s2 ;
 			const [h1, m1, s1] = marketOpentime.split(':').map(Number);
-			const timeToSeconds2= h2 * 3600 + m2 * 60 + s2 ;
 			const timeToSeconds1= h1 * 3600 + m1 * 60 + s1 ;			
 			const now = new Date();
 			const nowSeconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();	
-			if ((nowSeconds > timeToSeconds2) && (nowSeconds < timeToSeconds1)) || running) 
+			if (((nowSeconds > timeToSeconds2) && (nowSeconds < timeToSeconds1)) || running) 
 				return
 			 else 	
 			  running=true;
