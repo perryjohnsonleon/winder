@@ -1,9 +1,19 @@
 	const element1 = document.getElementById("myBar1");
-	const stockId_list=['2330','2454','2308','2317','2303','2356','2357','2353','1102','2324','2344','2408','6770','2337','2347','2371','1504','2891','2887','2884','00982A','00980A','00981A','0050','0056'];
+	const stockId_list1=['2330','2454','2308','2317','2303','2356','2357','2353','1102','2324','2344','8299','2408','6770','2337','2347','2371','1504','2891','00403A','00982A','00980A','00981A','0050','0056'];
+	const stockId_list2=['2330','2454','3661','3443','2303','2606','9940','3042','2603','1713','2609','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'] ;
+	const stockId_list3=['2882','2887','2891','2881','2884','2883','2892','2886','2838','2885','2890','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list4=['2603','2606','2605','2609','2610','2618','2615','2633','2645','2646','2634','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list5=['1301','1303','1325','1326','1314','1307','1304','1310','1308','1312','1313','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list6=['2027','2002','2014','2006','2010','2008','2009','2032','2010','2211','9958','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list7=['2501','2504','2528','2542','5522','2515','2520','2539','2536','2540','2505','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list8=['1402','1409','1413','1414','1417','1418','1419','1419','1434','1440','1441','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list9=['1216','1210','1215','1229','1217','1218','1201','1702','1203','1737','3054','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list10=['1903','1904','1905','1906','1907','1909','6790','6790','6790','6790','6790','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
+	const stockId_list11=['6214','2427','2453','2468','2471','2480','3029','4994','5203','6112','6183','0050','00878','006208','00713','00692','00881','00919','00940','00757','00982A','00983A','00984A','00985A','00992A'];
 	const mask_item1 = document.getElementById("hiddenMsg1") ;
 	const mask_item2 = document.getElementById("hiddenMsg2") ;
 	const mask_button = document.getElementById("collapseBtn2") ;
-	let running=false,sw_no=2,firstVisit = true ;     // original value:  true 
+	let stockId_list=[],running=false,sw_no=1,firstVisit = true ;     // original value:  true 
     let refSec = 3000 ; // original value:  0
 	let count=0 ,stockId=0 , btn2_expandId= ""  ;
 	let width = 0 , intervalIds = [] , itemPrice_matrix=[] , itemPrice_arry = [] , itemYear_arry11 = [] , itemYear_arry12 = [] , itemYear_arry13 = [] , itemYear_arry21 = [] , itemYear_arry22 = [] , itemYear_arry23 = [] ;
@@ -12,89 +22,54 @@
 	window.addEventListener('load',function(){
 		mask_item1.style.display == "none" ;
 		mask_item2.style.display == "none" ;
-		startShow();
+		startShow(1);
 		element1.style.width = '0%';  
 		document.getElementById("s01").addEventListener("change", refreshTime); 			
 	}); 
 	
    function refreshTime() {
+			while (intervalIds.length) {
+				clearInterval(intervalIds.pop());
+			};
              switch ( $(this).val()) {
-					  case "A": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_a.htm' ;
+					  case "1": 
+							startShow(1);
 							break;
-					  case "B":
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_b.htm'	;
+					  case "2":
+							startShow(2);
 							break;
-					  case "C": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_c.htm' ;
+					  case "3": 
+							startShow(3);
 							break;
-					  case "D": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_d.htm' ;
+					  case "4": 
+							startShow(4);
 							break;
-					  case "E": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_e.htm' ;
+					  case "5": 
+							startShow(5);
 							break;
-					  case "F": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_f.htm' ;
+					  case "6": 
+							startShow(6);
 							break;
-					  case "W": 
-							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_w.htm' ;
+					  case "7": 
+							startShow(7);
 							break;
-					  case "X": 
-							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_x.htm' ;
+					  case "8": 
+							startShow(8);
 							break;
-					  case "K": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial2/index_k.htm' ;
+					  case "9": 
+							startShow(9);
 							break;
-					  case "Q": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial2/index_q.htm' ;
+					  case "10": 
+							startShow(10);
 							break;
-					  case "U": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial2/index_u.htm' ;
-							break;
-					  case "V": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial2/index_v.htm' ;
-							break;
-					  case "Y": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_xx.htm' ;
+					  case "11": 
+							startShow(11);
 							break;
 					  case "Z": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/index_z.htm' ;
-							break;
-					  case "P": 
-							window.location.href = 'https://perryjohnsonleon.github.io/tutorial/graph.htm' ;
-							break;
-					  case "-1": 
-							window.location.href = 'https://perryjohnsonleon.github.io/exercise' ;
-							break;
-                  case "0": 
-                     width = 100;
-                     refSec = 99999 ;
-                     element1.style.width = '0%'; 
-                     break;
-                  case "1": 
-                     refSec = 3000 ;
-                     break;
-                  case "2":
-                     refSec = 5000 ;
-                     break;
-                  case "3": 
-                     refSec = 10000 ;
-                     break;
-                  case "5": 
-                     refSec = 30000 ;
-                     break;
-                  case "6": 
-                  refSec = 60000 ;
-                     break;
-                  case "7": 
-                     refSec = 600000 ;
-                     break; 
-                  case "10": 
-                     refSec = 1800000 ;
-                     break;                                     
+							getWDATA();
+							break;                                 
                   default:
-                     refSec = 60000 ;
+                    //  refSec = 60000 ;
                      return;
                     } 
 
@@ -109,7 +84,7 @@
 	      return 0;
 		}
 		else {
-		  oldCanvas.outerHTML = "<div id='hiddenMsg2'><canvas id='myChart' width='320' height='200'></canvas><div id='collapseBtn2' style='justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='getpricePost(-1)' /></div></div>" ;
+		  oldCanvas.outerHTML = "<div id='hiddenMsg2' style='display:block;'><canvas id='myChart' width='320' height='200'></canvas><div id='collapseBtn2' style='justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='getpricePost(-1)' /></div></div>" ;
 		}
 		let fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1"   ;
 		let fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;
@@ -134,7 +109,9 @@
 		if (stockId == 9999 ) 
 			fetchUrl_str="https://ws.api.cnyes.com/ws/api/v1/charting/history?symbol=TWS:TSE01:INDEX&resolution=D&quote=1&from=NaN&to=NaN"
 		else
-			fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;	
+			fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;
+		if (stockId == 8888 ) fetchUrl_str="https://ws.api.cnyes.com/ws/api/v1/charting/history?symbol=TWS:TSE01:INDEX&resolution=D&quote=1&from=NaN&to=NaN" ;
+		if (stockId == 7777 ) fetchUrl_str="https://ws.api.cnyes.com/ws/api/v1/charting/history?symbol=TWS:TSE01:INDEX&resolution=D&quote=1&from=NaN&to=NaN" ;		
 		const response = await fetch(fetchUrl_str);
 		if (!response.ok) {
 		  throw new Error(`HTTP error! status: ${response.status}`);
@@ -146,6 +123,91 @@
 		return null;
      }
   }
+  
+    async function getWDATA() {
+		await displayPost(7777);
+	}  
+  
+  
+       function getWDATA1() {
+		// https://invest.cnyes.com/indices/major 世界各國主要指數
+		// https://ws.api.cnyes.com/ws/api/v3/universal/quote?type=IDXMAJOR&column=B&page=1&limit=20	
+		// data.items ['200009'品名,'11'收盤,'12'最高,'13'最低]	 陣列排序 1.日本 2. 韓國 ˇ3.集中 4.櫃買 5.6.恆生 7.8.9.10上證滬深 11 英 12 法 13 德
+		// 14 道瓊15 S&P500 16 NASDAQ 17 費城半導體	 18 黃金 19 美元
+		// https://ws.api.cnyes.com/ws/api/v3/universal/quote?type=IDXMAJOR&column=B&page=2&limit=10
+		// data.items ['200009'品名,'11'收盤,'12'最高,'13'最低]	 陣列排序 4.道瓊 6.NASDAQ 5. SP500 7. 費城半導體
+        $.getJSON('https://ws.api.cnyes.com/ws/api/v3/universal/quote?type=IDXMAJOR&column=B&page=2&limit=10',function(data){
+            // console.log('success');
+          $.each(data,function(key1,item1){
+             if (key1 === 'data') {
+             //  $('ul').append('<li>'+item1+'</li>');
+            var itemData = item1; 	          
+            $.each(itemData,function(key2,item2){
+              if (key2  === 'items' ) {
+                  var itemData2 = item2;
+                  var itemDataTemp ;
+                //  Dowjon - starting
+                $.each(itemData2[3],function(key3,item3){
+                    if (key3 === '6') {
+                      itemDataTemp = item3 ;
+                       }
+                if (key3 === '200009') {
+                 //   $("#dowjon").html(item3 + '<BR>' + itemDataTemp );
+                     }   
+				if (key3 === '11') {
+                         $("#dowjon-p").html(item3);                             	
+                         if (item3> 0) 
+                             {
+                                $("#dowjon-p").addClass("risePrice"); 
+                                $("#dowjon-p").addClass("risePrice"); 
+                             } 
+                         else {
+                            if (item3 === 0){ 
+                               $("#dowjon-p").addClass("flatPrice"); 
+                              $("#dowjon-p").addClass("flatPrice"); 		
+                            }
+                            else {
+                               $("#dowjon-p").addClass("fellPrice"); 
+                              $("#dowjon-p").addClass("fellPrice"); 	
+                            }
+                         }
+                 } 
+                }) ; 
+                //  Dowjon - Ending  
+                //  Nasdaq - starting
+                  $.each(itemData2[5],function(key3,item3){
+                    if (key3 === '6') {
+                         itemDataTemp = item3 ;
+                       }
+                    if (key3 === '200009') {
+                    //  $("#nasdaq").html(item3 + '<BR>' + itemDataTemp );
+                     }   
+                    if (key3 === '11') {
+                        $("#nasdaq-p").html(item3);                              	
+                         if (item3> 0) 
+                             {
+                                $("#nasdaq-p").addClass("risePrice"); 
+                                $("#nasdaq-p").addClass("risePrice"); 
+                             } 
+                         else {
+                            if (item3 === 0){ 
+                               $("#nasdaq-p").addClass("flatPrice"); 
+                              $("#nasdaq-p").addClass("flatPrice"); 		
+                            }
+                            else {
+                               $("#nasdaq-p").addClass("fellPrice"); 
+                              $("#nasdaq-p").addClass("fellPrice"); 	
+                            }
+                         }
+                     } 
+                }) ; 
+                //  Nasdaq - Ending               		              		
+              }
+             });               
+          }
+         });
+        }); 
+    }; 
 
    async function getPostYOY(stockId,firstVisit) {
 	  try { 
@@ -177,7 +239,43 @@
      }
   }
 
-
+ async function displayWPost() {
+	   const post = await getPost(7777);
+	   let elemId_price = "" , elemId_price_flag = 0;
+	   const num = stockId+1 ;
+	   let elemId_1="item-1" + num , elemId_2="item-2" + num , elemId_3="item-3" + num , elemId_4="item-4" + num , elemId_5="item-5" + num ;
+	   if (post) {
+			const quote_obj = post.data.quote ;
+			for ( var n in quote_obj) {
+				if ( n == "200009" ) document.getElementById(elemId_1).innerHTML =  quote_obj[n] ;
+				if ( n == "6" ) elemId_price= quote_obj[n] ;
+				if ( n == "11" ) {
+						if ( quote_obj[n]> 0) {
+								elemId_price_flag= 1 ;
+								document.getElementById(elemId_3).classList.add('risePrice');
+							} 
+						else {
+							if ( quote_obj[n] === 0){ 
+								elemId_price_flag= 0 ;
+								document.getElementById(elemId_3).classList.add('flatPrice');
+								}
+							else {
+								elemId_price_flag= -1 ;
+								document.getElementById(elemId_3).classList.add('fellPrice');	
+								}
+						}
+					document.getElementById(elemId_3).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+				
+				}	   
+				if ( n == "12" ) document.getElementById(elemId_4).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+				if ( n == "13" ) document.getElementById(elemId_5).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+			}
+			document.getElementById(elemId_2).innerHTML =  "<button id='" + btn2_expandId +"' onclick='realtimePrice(" + stockId + ",true);'>" + elemId_price + "</button>" ;
+			if (elemId_price_flag === 1)  document.getElementById(btn2_expandId).classList.add('btn-risePrice');
+			if (elemId_price_flag === 0)  document.getElementById(btn2_expandId).classList.add('btn-flatPrice');	
+			if (elemId_price_flag === -1)  document.getElementById(btn2_expandId).classList.add('btn-fellPrice');		
+	  }
+  } 
 
  async function displayPost(stockId) {
 	  const post = await getPost(stockId);
@@ -214,32 +312,28 @@
 			if (post) {
 				const quote_obj = post.data.quote ;
 				for ( var n in quote_obj) {
-					const preNo = stockId_list[stockId].substring(0, 2);
-					if ( n == "200009" ) {
-						let itemHeadname= quote_obj[n] ;
-						if (preNo == "00") itemHeadname= stockId_list[stockId] ;
-						document.getElementById(elemId_1).innerHTML =  "<button class='btn-expand' onclick='showElement(" + stockId + ",false);'>" +  itemHeadname + "</button>" 
-					}
-					if ( n == "6" ) elemId_price= quote_obj[n] ;
-					if ( n == "11" ) {
-							if ( quote_obj[n]> 0) {
-									elemId_price_flag= 1 ;
-									document.getElementById(elemId_3).classList.add('risePrice');
-								} 
+				if ( n == "200009" ) document.getElementById(elemId_1).innerHTML =  "<button class='btn-expand' onclick='showElement(" + stockId + ",false);'>" + quote_obj[n] + "</button>" ;
+				if ( n == "6" ) elemId_price= quote_obj[n] ;
+				if ( n == "11" ) {
+						if ( quote_obj[n]> 0) {
+								elemId_price_flag= 1 ;
+								document.getElementById(elemId_3).classList.add('risePrice');
+							} 
+						else {
+							if ( quote_obj[n] === 0){ 
+								elemId_price_flag= 0 ;
+								document.getElementById(elemId_3).classList.add('flatPrice');
+								}
 							else {
-								if ( quote_obj[n] === 0){ 
-									elemId_price_flag= 0 ;
-									document.getElementById(elemId_3).classList.add('flatPrice');
-									}
-								else {
-									elemId_price_flag= -1 ;
-									document.getElementById(elemId_3).classList.add('fellPrice');	
-									}
-							}
-						document.getElementById(elemId_3).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;					
-					}	   
-					if ( n == "12" ) document.getElementById(elemId_4).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
-					if ( n == "13" ) document.getElementById(elemId_5).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+								elemId_price_flag= -1 ;
+								document.getElementById(elemId_3).classList.add('fellPrice');	
+								}
+						}
+					document.getElementById(elemId_3).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+				
+				}	   
+				if ( n == "12" ) document.getElementById(elemId_4).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
+				if ( n == "13" ) document.getElementById(elemId_5).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
 				}
 				document.getElementById(elemId_2).innerHTML =  "<button id='" + btn2_expandId +"' onclick='realtimePrice(" + stockId + ",true);'>" + elemId_price + "</button>" ;
 				if (elemId_price_flag === 1)  document.getElementById(btn2_expandId).classList.add('btn-risePrice');
@@ -384,21 +478,19 @@
 		  }
 	 }
 
-  async function displayPostChart() {	
-	    console.log('Top!!!') ;
+  async function displayPostChart() {
 		document.documentElement.scrollTop=0;
   } 
  
  async function realtimePrice(stockId,firstVisit) {	
  		let mymatrix,wi_o,wi_h,wi_c,wi_cc,wi_gg,wi_t,wi_tt,midline_txt1,midline_txt2,title_txt,item_name1,item_name2,item_price1,item_price2,mid_price1=0,mid_price2=0,min_price=0,max_price=0,incdecPrice1,incdecPrice2,timeLabel,labels=[],dataPoints1=[],dataPoints2=[],title1="圖例1",title2="圖例2",point_no=0;
 		let rightVisible = true;
-		if (firstVisit) sw_no=2;
+		if (firstVisit) sw_no=1;
 		const oldChart=document.getElementById("realtimeChart");
 		const oldcollapseBtn2=document.getElementById("collapseBtn2");
 		const oldstopBtn=document.getElementById("stopBtn");
 		const oldcollapseBtns=document.getElementById("collapseBtns");
 		const oldhiddenMsg2=document.getElementById("hiddenMsg2");
-		console.log("firstVisit=" + firstVisit);	
 		if (oldhiddenMsg2 && firstVisit) oldhiddenMsg2.style.display = "block" ;		
 		if (oldChart && firstVisit) oldChart.outerHTML = "<canvas id='realtimeChart' width='320' height='200' style='display:block;'></canvas>" ;
 		if  (oldcollapseBtn2 && firstVisit) {
@@ -441,8 +533,8 @@
 					max_price=mid_price1*1.12 ;
 					min_price=mid_price1*0.9 ;
 				}				
-			// midline_txt1= item_name1+'平盤：'+mid_price1.toString() ; 
-				midline_txt1 = item_price1.toString();
+			//  midline_txt1= item_name1+'平盤：'+mid_price1.toString() ; 
+				midline_txt1 = '平盤：'+ item_price1.toString() ;
 			}
 		  if (sw_no==2 && post2) {
 				wi_o=post2.data.o;
@@ -521,7 +613,8 @@
 				  },
 				  y2: {
 					type:'linear',
-					position: 'right'
+					position: 'right',
+					display:false
 				  }
 				},
 				plugins: {
@@ -538,14 +631,14 @@
 						label: {
 						  display: true,
 						  content: midline_txt1,				// '中線 y=38'
-						  fontWeight:200,
 						  color: '#c431a7',						// '#00ff88'
 						  backgroundColor: '#000' ,
+						  position: 'start',
 						  font: {
 							size: 8,
-							weight: 250,  // Set 'lighter'
+							weight: 200,  // Set 'lighter'
 						  }
-						//  position: 'start'
+						  //position: 'start'
 						}
 					  },
 					  rightMidline: {
@@ -559,14 +652,14 @@
 						label: {
 						  display: true,
 						  content: midline_txt2 ,			// '中線 y=38'
-						  fontWeight:200,
+						  fontWeight:100,
 						  color: '#00b3ff',
 						  backgroundColor: '#000',
 						  position: 'end',
 						  font: {
-							size: 8,
-							weight: 250,  // Set 'lighter'
-						  }
+								size: 8,
+								weight: 200, 
+						 }
 						}
 					  }
 					}
@@ -597,7 +690,6 @@
 			document.getElementById('stopBtn').addEventListener('click',()=>(running=true));	  
 			document.getElementById('goBtn').addEventListener('click',()=>(running=false));
 			chart.update();	
-			console.log('chart=',chart);
 		  id=setInterval(async() => {
 				const marketClosetime = "13:30:00"; 
 				const [h, m, s] = marketClosetime.split(':').map(Number);
@@ -632,7 +724,7 @@
 						mid_price1=item_price1-incdecPrice1;
 						mid_price1=mid_price1.toFixed(2) ;
 					//	midline_txt1= item_name1+'平盤：'+mid_price1.toString() ; 
-						midline_txt1 = item_price1.toString();						
+						midline_txt1 = '平盤：'+ item_price1.toString();						
 					}
 				  if (rightVisible==true && post2)  {
 						wi_o=post2.data.o;
@@ -646,7 +738,7 @@
 						}
 						mid_price2=item_price2-incdecPrice2;
 					//	midline_txt2= item_name2+'平盤：'+mid_price2.toString() ; 
-						midline_txt2 = item_price2.toString() ;				
+						midline_txt2 = item_price2.toString();				
 					}
 				 labels.push(timeLabel);
 				 dataPoints1.push(item_price1);
@@ -688,7 +780,7 @@
 		firstVisit = false;
 	    let mask_item2 = document.getElementById("hiddenMsg2");
 	    if (mask_item2) {
-	      mask_item2.outerHTML = "<div id='hiddenMsg2' style='display:flex;'><div><canvas id='realtimeChart' width='320' height='200' style='display:none;'></canvas></div>" + 
+	      mask_item2.outerHTML = "<div id='hiddenMsg2' style='display:block;'><div><canvas id='realtimeChart' width='320' height='200' style='display:none;'></canvas></div>" + 
 			"<div id='collapseBtns' style='display:flex'><div id='collapseBtn2' style='display:none;justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='collapseElement2()' /></div>" + 
 			"<div id='oneBtn' style='display:none;justify-content:center;'><img src='onebtn.png' style='cursor:pointer;' /></div>" +
 			"<div id='twinBtn' style='display:none;justify-content:center;'><img src='twinbtn.png' style='cursor:pointer;' /></div>" +			
@@ -705,31 +797,21 @@
 		firstVisit = false;
     }
 	  
-  async function startShow() {
+  async function startShow(sel_No) {
+		if (sel_No == 1) stockId_list=JSON.parse(JSON.stringify(stockId_list1));
+		if (sel_No == 2) stockId_list=JSON.parse(JSON.stringify(stockId_list2));
+		if (sel_No == 3) stockId_list=JSON.parse(JSON.stringify(stockId_list3));
+		if (sel_No == 4) stockId_list=JSON.parse(JSON.stringify(stockId_list4));
+		if (sel_No == 5) stockId_list=JSON.parse(JSON.stringify(stockId_list5));
+		if (sel_No == 6) stockId_list=JSON.parse(JSON.stringify(stockId_list6));
+		if (sel_No == 7) stockId_list=JSON.parse(JSON.stringify(stockId_list7));
+		if (sel_No == 8) stockId_list=JSON.parse(JSON.stringify(stockId_list8));
+		if (sel_No == 9) stockId_list=JSON.parse(JSON.stringify(stockId_list9));
+		if (sel_No == 10) stockId_list=JSON.parse(JSON.stringify(stockId_list10));
+		if (sel_No == 11) stockId_list=JSON.parse(JSON.stringify(stockId_list11));
 		await displayPost(9999);
-		await displayPost(0);
-		await displayPost(1);
-		await displayPost(2);
-		await displayPost(3);
-		await displayPost(4);
-		await displayPost(5);
-		await displayPost(6);
-		await displayPost(7);
-		await displayPost(8);
-		await displayPost(9);
-		await displayPost(10);
-		await displayPost(11);
-		await displayPost(12);
-		await displayPost(13);
-		await displayPost(14);
-		await displayPost(15);
-		await displayPost(16);
-		await displayPost(17);
-		await displayPost(18);
-		await displayPost(19);
-		await displayPost(20);
-		await displayPost(21);
-		await displayPost(22);
-		await displayPost(23);
-		await displayPost(24);
-	}  
+		for (let i=0;i<stockId_list.length;i++) {
+			await displayPost(i);
+		}
+
+	}   
