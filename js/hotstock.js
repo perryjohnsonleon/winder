@@ -490,7 +490,7 @@
     }
 	
 	async function showRealprice(stockNo) {
-		window.location.href = 'https://perryjohnsonleon.github.io/ddww/tickchart.htm?stockid=' + stockNo ;
+		window.location.href = 'https://perryjohnsonleon.github.io/winder/tickchart.htm?stockid=' + stockNo ;
     }
 
 
