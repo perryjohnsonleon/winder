@@ -52,14 +52,13 @@ canvas {
   color:#0B0A0A;
   font-weight:600 ;
   background-color:rgba(82,82,82); 
- // background-color:#007799; 
   font-size:13px;
   border: none;
  }	
 
 .btn-expand2 {
- color:#000;
- background-color:rgba(82,82,82); 
+ background-color:rgba(16,24,71);
+ font-size:13px; 
  border: none;
 }
 
