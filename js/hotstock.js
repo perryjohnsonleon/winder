@@ -208,44 +208,6 @@
      }
   }
 
- async function displayWPost() {
-	   const post = await getPost(7777);
-	   let elemId_price = "" , elemId_price_flag = 0;
-	   const num = stockId+1 ;
-	   let elemId_1="item-1" + num , elemId_2="item-2" + num , elemId_3="item-3" + num , elemId_4="item-4" + num , elemId_5="item-5" + num ;
-	   if (post) {
-			const quote_obj = post.data.quote ;
-			for ( var n in quote_obj) {
-				if ( n == "200009" ) document.getElementById(elemId_1).innerHTML =  quote_obj[n] ;
-				if ( n == "6" ) elemId_price= quote_obj[n] ;
-				if ( n == "11" ) {
-						if ( quote_obj[n]> 0) {
-								elemId_price_flag= 1 ;
-								document.getElementById(elemId_3).classList.add('risePrice');
-							} 
-						else {
-							if ( quote_obj[n] === 0){ 
-								elemId_price_flag= 0 ;
-								document.getElementById(elemId_3).classList.add('flatPrice');
-								}
-							else {
-								elemId_price_flag= -1 ;
-								document.getElementById(elemId_3).classList.add('fellPrice');	
-								}
-						}
-					document.getElementById(elemId_3).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
-				
-				}	   
-				if ( n == "12" ) document.getElementById(elemId_4).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
-				if ( n == "13" ) document.getElementById(elemId_5).innerHTML =  "<span class='span_rpt'>" + quote_obj[n] + "</span>" ;
-			}
-			document.getElementById(elemId_2).innerHTML =  "<button id='" + btn2_expandId +"' onclick='realtimePrice(" + stockId + ",true);'>" + elemId_price + "</button>" ;
-			if (elemId_price_flag === 1)  document.getElementById(btn2_expandId).classList.add('btn-risePrice');
-			if (elemId_price_flag === 0)  document.getElementById(btn2_expandId).classList.add('btn-flatPrice');	
-			if (elemId_price_flag === -1)  document.getElementById(btn2_expandId).classList.add('btn-fellPrice');		
-	  }
-  } 
-
  async function displayPost(stockId,itemId) {
 	  const post = await getPost(stockId);
 	  let elemId_price = "" , elemId_price_flag = 0;
@@ -325,6 +287,14 @@
 				cell.textContent = value;
 				row.appendChild(cell);
 			  });
+			  const abacusCell = document.createElement('div');
+			  abacusCell.className = 'item-abacus';
+			  const abacusbtn = document.createElement('button');
+			  abacusbtn.className = 'btn-expand2'; 
+			  abacusbtn.textContent = "\u{1F9EE}" ;
+			  abacusbtn.onclick = () => countProfit(stockId,firstVisit);  
+			  abacusCell.appendChild(abacusbtn);
+			  row.appendChild(abacusCell);			  
 			  mainList.appendChild(row);	
 		   // ================================
 		   //  Build Market List --- Ending
@@ -471,10 +441,6 @@
 		document.documentElement.scrollTop=0;
   } 
  
- async function realtimePrice(stockId,firstVisit) {	
-	 window.location.href = 'http://perryjohnsonleon.github.io/exercise/index_a.htm' ;
-   }   
-
    function timestampToTime(timestamp) {
         var date = new Date(timestamp * 1000);
         var Y = date.getFullYear() + '-';
@@ -490,7 +456,10 @@
 	async function showRealprice(stockNo) {
 		window.location.href = 'https://perryjohnsonleon.github.io/winder/tickchart.htm?stockid=' + stockNo ;
     }
-
+	
+	async function countProfit(stockNo) {
+		window.location.href = 'https://perryjohnsonleon.github.io/winder/cal.htm?stockid=' + stockNo ;
+    }
 
 	function collapseElement() {
       mask_item1.style.display="none" ;
