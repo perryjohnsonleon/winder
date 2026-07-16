@@ -81,10 +81,10 @@
     letter-spacing:2px;
     color:var(--gold);
     text-transform:uppercase;
-    margin:0 0 16px;
+    margin:0 0 2px;
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:2px;
   }
   .panel-title::after{
     content:'';
@@ -398,7 +398,8 @@
 <body>
 <div class="wrap">
   <div class="panel">
-    <p class="panel-title">交易方向</p>
+    <span>交易方向</span>
+    <span style="text-align:right;"><a href="hotstock.htm"><img src="img/home.png" /></a></span>
     <div class="toggleRow" role="group" aria-label="交易方向">
       <button type="button" id="dirLong" class="active">做多 LONG（先買後賣）</button>
       <button type="button" id="dirShort">做空 SHORT（先賣後買）</button>
