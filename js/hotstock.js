@@ -106,7 +106,6 @@
 		// https://ws.api.cnyes.com/ws/api/v3/universal/quote?type=IDXMAJOR&column=B&page=2&limit=10
 		// data.items ['200009'品名,'11'收盤,'12'最高,'13'最低]	 陣列排序 4.道瓊 6.NASDAQ 5. SP500 7. 費城半導體
         $.getJSON('https://ws.api.cnyes.com/ws/api/v3/universal/quote?type=IDXMAJOR&column=B&page=2&limit=10',function(data){
-            // console.log('success');
           $.each(data,function(key1,item1){
              if (key1 === 'data') {
              //  $('ul').append('<li>'+item1+'</li>');
@@ -495,7 +494,6 @@
 	await displayPost(9999);
 	for (let i=0;i<stockId_list.length;i++) {
 		await displayPost(stockId_list[i],i);
-		// console.log(row)
 	}
 	/*
     const result = numbers.map((value, index) => {
