@@ -18,6 +18,7 @@
 		document.querySelectorAll('.taxPreset').forEach((b,index) => { if (index == 0) b.classList.add('active')})
 	}	
 	else {
+		$('taxRate').value = 0.1;
 		document.querySelectorAll('.taxPreset').forEach((b,index) => b.classList.remove('active')) ;		
 		document.querySelectorAll('.taxPreset').forEach((b,index) => { if (index == 2) b.classList.add('active')}) 
 	}
