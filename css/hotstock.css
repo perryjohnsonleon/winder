@@ -29,10 +29,18 @@ canvas {
  .wi-box {
 	display:inline-block;
 	vertical-align: auto;
-	font-weight:bold;
-	font-size:12px;
+	font-weight:normal;
+	font-size:10px;
 	color:#FFB300;
    }
+   
+ .wi-box2 {
+	display:inline-block;
+	vertical-align: auto;
+	font-weight:normal;
+	font-size:9px;
+	color:#FFB300;
+   }   
 
  button {
   margin:0px;
