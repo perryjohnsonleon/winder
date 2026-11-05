@@ -210,6 +210,7 @@
   saveAlert.addEventListener('click', function(){
     var riseOn = riseEnabledInput.checked;
     var fallOn = fallEnabledInput.checked;
+	console.log(1,riseOn,2,fallOn);
     var riseVal = parseFloat(riseTargetInput.value);
     var fallVal = parseFloat(fallTargetInput.value);
 
