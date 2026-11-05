@@ -355,7 +355,7 @@
     riseGaugeRow.style.display = state.rise.enabled ? 'block' : 'none';
     fallGaugeRow.style.display = state.fall.enabled ? 'block' : 'none';
     noGaugeMsg.style.display = (!state.rise.enabled && !state.fall.enabled) ? 'block' : 'none';
-
+	console.log("fallGaugeRow=",fallGaugeRow.style.display);
     if (state.rise.enabled){
       riseGaugeOpen.textContent = state.open.toFixed(2);
       riseGaugeCurrent.textContent = state.price.toFixed(2);
@@ -371,6 +371,7 @@
     }
 
     if (state.fall.enabled){
+	  console.log("fallenabeled!!");
       fallGaugeOpen.textContent = state.open.toFixed(2);
       fallGaugeCurrent.textContent = state.price.toFixed(2);
       fallGaugeTargetVal.textContent = '$' + state.fall.target.toFixed(2);
