@@ -399,6 +399,7 @@
     }
 
     if (state.fall.enabled){
+	  console.log("state.fall.enabled=",state.fall.enabled);		
       var fallHit = state.price <= state.fall.target ? true : false ;	  
       if (fallHit && !state.fall.prevHit){
         if (state.chimeOn) startRinging('fall');
