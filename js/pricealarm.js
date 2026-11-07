@@ -238,6 +238,7 @@
 
     updateAlertStatus();
     overlay.classList.remove('open');
+	updateGauge();
   });
 
   chimeBtn.addEventListener('click', function(){
@@ -514,12 +515,11 @@
   }
 
   async function startShow(stockId) {
-	  	await resizeCanvas(stockId);
-		await updateAlertStatus();	   
+	  	await resizeCanvas();  
 		await updateHero(stockId);
 		await updateDayStats();
-		await updateGauge(stockId);
-		await drawChart(stockId);
+		await updateGauge();
+		await drawChart();
 		await updateAlertStatus();
 		id=setInterval(async() => {
 			const marketClosetime = "13:30:00" , marketOpentime = "09:00:00" ; 
@@ -532,10 +532,10 @@
 			if ((nowSeconds > timeToSeconds1) && (nowSeconds < timeToSeconds2)) {
 				if  (running) return;
 				await updateHero(stockId);
-				await resizeCanvas(STOCKID);			
-				await updateGauge(STOCKID);
-				await drawChart(STOCKID);
-				await checkAlert(STOCKID);		
+				await resizeCanvas();			
+				await updateGauge();
+				await drawChart();
+				await checkAlert();		
 			}
 			else  { 		 
 				return;
